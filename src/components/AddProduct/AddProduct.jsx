@@ -60,7 +60,7 @@ const addProduct = (props) => {
             <label htmlFor="text-input">Product Price</label>
             <input
               required
-              type="text"
+              type="number"
               name="price"
               id="text-input"
               value={formData.price}
