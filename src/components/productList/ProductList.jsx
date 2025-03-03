@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom';
 
 
 const ProductList = (props) => {
+    // console.log(props)
     return (
       <main>
-        {/* {props.markets.map((market) => (
+        {props.market.map((market) => (
           <p key={market._id}>{market.name}</p>
-        ))} */}
+        ))}
       </main>
     );
   };
