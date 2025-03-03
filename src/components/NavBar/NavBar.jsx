@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { AuthedUserContext } from "../../App";
 import { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import '/Users/sayedhaideralhashemi/code/ga/projects/Ahlan-Market-React-Front-End/src/App.css';
+import '../../App.css';
 
 const NavBar = ({ handleSignout }) => {
   const user = useContext(AuthedUserContext);
