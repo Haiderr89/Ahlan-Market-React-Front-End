@@ -1,5 +1,5 @@
 import { useState, createContext, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import Landing from './components/Landing/Landing';
 import Dashboard from './components/Dashboard/Dashboard';
@@ -14,14 +14,21 @@ export const AuthedUserContext = createContext(null);
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser()); // using the method from authservice
+  const [market, setMarket] = useState([]);
+  const navigate = useNavigate();
 
   const handleSignout = () => {
     authService.signout();
     setUser(null);
   };
 
-  const [market, setMarket] = useState([]);
-  // const [post, setPost] = useState([]);
+  const handleAddProduct = async (productFormData) => {
+    const newProduct = await marketService.create(productFormData)
+    const newProductList = [ newProduct, ...market];
+
+    setMarket(newProductList)
+    navigate('/market');
+  };
 
   useEffect(() => {
     const fetchAllMarkets = async () => {
@@ -44,7 +51,7 @@ const App = () => {
           <Route path="/signup" element={<SignupForm setUser={setUser} />} />
           <Route path="/signin" element={<SigninForm setUser={setUser} />} />
           <Route path="/market" element={<ProductList market={market}/>} />
-          <Route path="/market/new" element={<AddProduct/>} />
+          <Route path="/market/new" element={<AddProduct handleAddProduct={handleAddProduct}/>} />
         </Routes>
       </AuthedUserContext.Provider>
     </>

@@ -34,9 +34,9 @@ const addProduct = (props) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     if (productId) {
-      props.handleUpdateHoot(productId, formData);
+      props.handleUpdateProduct(productId, formData);
     } else {
-      props.handleAddHoot(formData);
+      props.handleAddProduct(formData);
     }
   };
 
