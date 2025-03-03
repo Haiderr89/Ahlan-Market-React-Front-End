@@ -25,7 +25,7 @@ const App = () => {
   useEffect(() => {
     const fetchAllMarkets = async () => {
       const MarketData = await marketService.index();
-      console.log('MarketData:', MarketData);
+      setMarket(MarketData)
     };
     if (user) fetchAllMarkets();
   }, [user]);
@@ -42,7 +42,7 @@ const App = () => {
           )}
           <Route path="/signup" element={<SignupForm setUser={setUser} />} />
           <Route path="/signin" element={<SigninForm setUser={setUser} />} />
-          <Route path="/market" element={<ProductList ProductList={ProductList}/>} />
+          <Route path="/market" element={<ProductList market={market}/>} />
         </Routes>
       </AuthedUserContext.Provider>
     </>
