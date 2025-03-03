@@ -40,15 +40,18 @@
   }
 
 
-  form{
+  /* form{
     width: 45vw;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-  }
-
-  /* .div1{
-    width: 45vw;
-    display: flex;
-    flex-wrap: wrap;
   } */
+
+ form{
+  width: 60vw;
+  height: 60vh;
+ }
+
+ main{
+max-height: fit-content;
+}
