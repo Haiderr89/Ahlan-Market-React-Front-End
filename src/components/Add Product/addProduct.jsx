@@ -1,19 +1,106 @@
-import { Link } from "react-router-dom";
-import { AuthedUserContext } from "../../App";
-import { useContext } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import { Link } from "react-router-dom";
+// import { AuthedUserContext } from "../../App";
+// import { useContext } from "react";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import '../../App.css';
+import { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
+import * as marketService from '../../services/marketService';
+import styles from './marketService.module.css'
 
 
-const addProduct = ({ handleSignout }) => {
+const addProduct = (props) => {
+    const [formData, setFormData] = useState({
+      name: "",
+      price: "",
+      description: "",
+      image: "",
+      category: ""
+    });
+  
+    const { productId } = useParams();
+  
+    const handleChange = (evt) => {
+      setFormData({ ...formData, [evt.target.name]: evt.target.value });
+    };
+  
+    useEffect(() => {
+      const fetchProduct = async () => {
+        const productData = await marketService.show(productId);
+        setFormData(productData);
+      };
+      if (productId) fetchProduct();
+    }, [productId]);
+  
+    const handleSubmit = (evt) => {
+      evt.preventDefault();
+      if (productId) {
+        props.handleUpdateHoot(productId, formData);
+      } else {
+        props.handleAddHoot(formData);
+      }
+    };
 
-    return(
-        <>
-        
-        
-        </>
-    )
+    return (
 
-}
+  <main className={styles.container}>
+  <form onSubmit={handleSubmit}>
+          <h1>{productId ? "Edit Product" : "New Product"}</h1>
+          <label htmlFor="title-input">Product Name</label>
+          <input
+            required
+            type="text"
+            name="name"
+            id="title-input"
+            value={formData.name}
+            onChange={handleChange}
+          />
+          <label htmlFor="text-input">Product Price</label>
+          <input
+            required
+            type="text"
+            name="price"
+            id="text-input"
+            value={formData.price}
+            onChange={handleChange}
+          />
+            <label htmlFor="text-input">Add Description</label>
+          <textarea
+            required
+            type="text"
+            name="description"
+            id="text-input"
+            value={formData.description}
+            onChange={handleChange}
+          />
+
+        <label htmlFor="text-input">Product Image</label>
+          <input
+            required
+            type="text"
+            name="image"
+            id="text-input"
+            value={formData.image}
+            onChange={handleChange}
+          />
+
+          <label htmlFor="category-input">Category</label>
+          <select
+            required
+            name="category"
+            id="category-input"
+            value={formData.category}
+            onChange={handleChange}
+          >
+            <option value="New Product">New Product</option>
+            <option value="Used Product">Used Product</option>
+            <option value="Service">Service</option>
+          </select>
+          <button type="submit">SUBMIT</button>
+        </form>
+      </main>
+    );
+
+  };
 
 export default addProduct;
