@@ -9,6 +9,8 @@ import * as authService from '../src/services/authService'; // import the authse
 import * as marketService from '../src/services/marketService'
 import ProductList from './components/productList/ProductList';
 import AddProduct from './components/AddProduct/AddProduct';
+import ViewProduct from './components/ViewProduct/ViewProduct';
+
 
 export const AuthedUserContext = createContext(null);
 
@@ -52,6 +54,7 @@ const App = () => {
           <Route path="/signin" element={<SigninForm setUser={setUser} />} />
           <Route path="/market" element={<ProductList market={market}/>} />
           <Route path="/market/new" element={<AddProduct handleAddProduct={handleAddProduct}/>} />
+		  <Route path="/market/:marketId" element={<ViewProduct />} />
         </Routes>
       </AuthedUserContext.Provider>
     </>

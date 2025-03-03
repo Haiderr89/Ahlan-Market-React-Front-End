@@ -41,7 +41,9 @@ const ProductList = (props) => {
 													type="button"
 													class="btn btn-sm btn-outline-secondary"
 												>
-													View
+													<Link key={market._id} to={`/market/${market._id}`}>
+														View
+													</Link>
 												</button>
 												<button
 													type="button"

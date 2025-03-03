@@ -13,6 +13,18 @@ const index = async () => {
     }
   };
 
+  
+const show = async (marketId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${marketId}`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    });
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
   const create = async (AddProduct) => {
     try {
       const res = await fetch(BASE_URL, {
@@ -32,4 +44,5 @@ const index = async () => {
   export { 
     index,
     create,
+    show
    };
