@@ -1,7 +1,7 @@
 // import { Link } from "react-router-dom";
 // import { AuthedUserContext } from "../../App";
 // import { useContext } from "react";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import '../../App.css';
 import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
@@ -42,9 +42,13 @@ const addProduct = (props) => {
 
     return (
 
-  <main className={styles.container}>
-  <form onSubmit={handleSubmit}>
-          <h1>{productId ? "Edit Product" : "New Product"}</h1>
+  <main className={styles.container}>          
+  <h1>{productId ? "Edit Product" : "New Product"}</h1>
+  <form onSubmit={handleSubmit} class="needs-validation">
+
+  <div class="row">
+                    
+  <div class="col-md-8 mb-3">
           <label htmlFor="title-input">Product Name</label>
           <input
             required
@@ -54,6 +58,8 @@ const addProduct = (props) => {
             value={formData.name}
             onChange={handleChange}
           />
+    </div>
+    <div class="col-md-4 mb-3">
           <label htmlFor="text-input">Product Price</label>
           <input
             required
@@ -63,6 +69,8 @@ const addProduct = (props) => {
             value={formData.price}
             onChange={handleChange}
           />
+              </div>
+</div>
             <label htmlFor="text-input">Add Description</label>
           <textarea
             required
@@ -96,8 +104,12 @@ const addProduct = (props) => {
             <option value="Service">Service</option>
           </select>
           <button type="submit">SUBMIT</button>
+        
+
         </form>
+        
       </main>
+      
     );
 
   };

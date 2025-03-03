@@ -8,7 +8,7 @@ import SigninForm from './components/SigninForm/SigninForm';
 import * as authService from '../src/services/authService'; // import the authservice
 import * as marketService from '../src/services/marketService'
 import ProductList from './components/productList/ProductList';
-import addProduct from './components/Add Product/addProduct';
+import AddProduct from './components/AddProduct/AddProduct';
 
 export const AuthedUserContext = createContext(null);
 
@@ -21,6 +21,7 @@ const App = () => {
   };
 
   const [market, setMarket] = useState([]);
+  // const [post, setPost] = useState([]);
 
   useEffect(() => {
     const fetchAllMarkets = async () => {
@@ -43,6 +44,7 @@ const App = () => {
           <Route path="/signup" element={<SignupForm setUser={setUser} />} />
           <Route path="/signin" element={<SigninForm setUser={setUser} />} />
           <Route path="/market" element={<ProductList market={market}/>} />
+          <Route path="/market/new" element={<AddProduct/>} />
         </Routes>
       </AuthedUserContext.Provider>
     </>
