@@ -43,7 +43,6 @@ const App = () => {
           <Route path="/signup" element={<SignupForm setUser={setUser} />} />
           <Route path="/signin" element={<SigninForm setUser={setUser} />} />
           <Route path="/market" element={<ProductList ProductList={ProductList}/>} />
-          <Route path="/new" element={<addProduct addProduct={addProduct}/>} />
         </Routes>
       </AuthedUserContext.Provider>
     </>
