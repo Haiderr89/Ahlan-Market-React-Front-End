@@ -38,3 +38,17 @@
     outline: none;
     border: 1px solid var(--primary);
   }
+
+
+  form{
+    width: 45vw;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  /* .div1{
+    width: 45vw;
+    display: flex;
+    flex-wrap: wrap;
+  } */

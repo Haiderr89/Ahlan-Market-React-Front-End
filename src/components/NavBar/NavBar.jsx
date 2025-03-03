@@ -33,12 +33,12 @@ const NavBar = ({ handleSignout }) => {
             {user ? (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link" to={`/users/${user._id}/trips/new`}>
+                  <Link className="nav-link" to={`/market/new`}>
                     Add Product
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={`/users/${user._id}/trips`}>
+                  <Link className="nav-link" to={`/market`}>
                     View Products
                   </Link>
                 </li>
