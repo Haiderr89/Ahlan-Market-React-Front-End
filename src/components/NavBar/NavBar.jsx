@@ -1,38 +1,72 @@
-import { Link } from 'react-router-dom';
-import { AuthedUserContext } from '../../App';
-import { useContext } from 'react';
+import { Link } from "react-router-dom";
+import { AuthedUserContext } from "../../App";
+import { useContext } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import '/Users/sayedhaideralhashemi/code/ga/projects/Ahlan-Market-React-Front-End/src/App.css';
 
 const NavBar = ({ handleSignout }) => {
   const user = useContext(AuthedUserContext);
   return (
-    <>
-      {user ? (
-        <nav>
-          <ul>
-            <li>Welcome, {user.username}</li>
-            <li>
-              <Link to="/">Dashboard</Link>
-            </li>
-            <li>
-              <Link to="" onClick={handleSignout}>
-                Sign Out
+    <nav className="navbar navbar-expand-lg">
+      <div className="container-fluid cont">
+        <Link className="navbar-brand" to="/">
+          AhlanMarket
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <Link className="nav-link" to="/">
+                Home
               </Link>
             </li>
+            {user ? (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to={`/users/${user._id}/trips/new`}>
+                    Add Product
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to={`/users/${user._id}/trips`}>
+                    View Products
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/auth/sign-out" onClick={handleSignout}>
+                    Sign Out
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/signup">
+                    Sign Up
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/signin">
+                    Sign In
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
-        </nav>
-      ) : (
-        <nav>
-          <ul>
-            <li>
-              <Link to="/signin">Sign In</Link>
-            </li>
-            <li>
-              <Link to="/signup">Sign Up</Link>
-            </li>
-          </ul>
-        </nav>
-      )}
-    </>
+        </div>
+      </div>
+    </nav>
   );
 };
+
 export default NavBar;
