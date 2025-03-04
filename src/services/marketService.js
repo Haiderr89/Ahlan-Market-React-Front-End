@@ -88,6 +88,22 @@ const show = async (marketId) => {
     }
   };
 
+  const deleteComment = async (marketId, commentId) => {
+    try {
+      const res = await fetch(`${BASE_URL}/${marketId}/comments/${commentId}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      const response = res.json()
+      console.log(response)
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
 
   export { 
     index,
@@ -96,4 +112,5 @@ const show = async (marketId) => {
     deleteProduct,
     createComment,
     update,
+    deleteComment
    };

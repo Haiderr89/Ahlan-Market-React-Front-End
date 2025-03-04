@@ -90,6 +90,7 @@ const AddProduct = (props) => {
               value={formData.category}
               onChange={handleChange}
             >
+              <option value="Disabled" selected disabled:true>-</option>
               <option value="New Product">New Product</option>
               <option value="Used Product">Used Product</option>
               <option value="Service">Service</option>

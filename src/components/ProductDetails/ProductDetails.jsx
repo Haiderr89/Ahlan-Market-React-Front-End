@@ -11,114 +11,143 @@ import { AuthedUserContext } from "../../App";
 import CommentForm from "../CommentForm/CommentForm";
 
 const ProductDetails = (props) => {
-  const { marketId } = useParams();
-  const [product, setProduct] = useState(null);
-  const user = useContext(AuthedUserContext);
+	const { marketId } = useParams();
+	const [product, setProduct] = useState(null);
+  	const [commentdelete, setCommentdelete] = useState(null);
+	const user = useContext(AuthedUserContext);
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const productData = await marketService.show(marketId);
-        setProduct(productData);
-      } catch (error) {
-        console.error("Error fetching product:", error);
-      }
-    };
-    fetchProduct();
-  }, [marketId]);
+	useEffect(() => {
+		const fetchProduct = async () => {
+			try {
+				const productData = await marketService.show(marketId);
+				setProduct(productData);
+			} catch (error) {
+				console.error("Error fetching product:", error);
+			}
+		};
+		fetchProduct();
+	}, [marketId]);
 
-  const handleAddComment = async (commentFormData) => {
-    try {
-      const newComment = await marketService.createComment(
-        marketId,
-        commentFormData
-      );
-      setProduct((prevProduct) => ({
-        ...prevProduct,
-        comments: [...(prevProduct.comments || []), newComment],
-      }));
-    } catch (error) {
-      console.error("Error adding comment:", error);
-    }
+	const handleAddComment = async (commentFormData) => {
+		try {
+			const newComment = await marketService.createComment(
+				marketId,
+				commentFormData
+			);
+
+			setProduct((prevProduct) => ({
+				...prevProduct,
+				comments: [...(prevProduct.comments || []), newComment],
+			}));
+		} catch (error) {
+			console.error("Error adding comment:", error);
+		}
+	};
+
+  const handleDeleteComment = async (commentId) => {
+    console.log('commentId:', commentId);
+    // Eventually the service function will be called upon here
+	const deletedComment = await marketService.deleteComment(marketId, commentId)
+
+	setProduct((prevProduct) => ({
+		...prevProduct,
+		comments: product.comments.filter((comment) => comment._id !== commentId),
+	}));
+
+
+    // setProduct({
+    //   ...marketId,
+    //   comments: product.comments.filter((comment) => comment._id !== commentId),
+    // });
   };
 
-  if (!product) return <main>Loading...</main>;
+	if (!product) return <main>Loading...</main>;
 
-  return (
-    <main className={styles.container}>
-      <section>
-        <header>
-          <h1>{product.name}</h1>
-          <p>{product.category?.toUpperCase()}</p>
+	return (
+		<main className={styles.container}>
+			<section>
+				<header>
+					<h1>{product.name}</h1>
+					<p>{product.category?.toUpperCase()}</p>
 
-          <img
-            src={product.image}
-            alt={product.name}
-            className={styles.productImage}
-            style={{height:"60%"}}
-          />
+					<img
+						src={product.image}
+						alt={product.name}
+						className={styles.productImage}
+						style={{ height: "60%" }}
+					/>
 
-          <h2>${product.price}</h2>
+					<h2>${product.price}</h2>
 
-          <p>{product.description}</p>
+					<p>{product.description}</p>
 
-          <div>
-            {product.author ? (
-              <p>
-                {product.author.username} posted on{" "}
-                {new Date(product.createdAt).toLocaleDateString()}
-              </p>
-            ) : (
-              <p>Unknown Author</p>
-            )}
-            {product.author?._id === user?._id && (
-              <>
-                <button className="btn btn-warning"><Link to={`/market/${marketId}/edit`} style={{color:"white"}}>Edit</Link></button>
-                <button className="btn btn-danger" onClick={() => props.handleDeleteProduct(marketId)}>
-                  Delete
-                </button>
-              </>
-            )}
-          </div>
-        </header>
-      </section>
+					<div>
+						{product.author ? (
+							<p>
+								{product.author.username} posted on{" "}
+								{new Date(product.createdAt).toLocaleDateString()}
+							</p>
+						) : (
+							<p>Unknown Author</p>
+						)}
+						{product.author?._id === user?._id && (
+							<>
+								<button className="btn btn-warning">
+									<Link
+										to={`/market/${marketId}/edit`}
+										style={{ color: "white" }}
+									>
+										Edit
+									</Link>
+								</button>
+								<button
+									className="btn btn-danger"
+									onClick={() => props.handleDeleteProduct(marketId)}
+								>
+									Delete
+								</button>
+							</>
+						)}
+					</div>
+				</header>
+			</section>
 
-      <section>
-        <h2>Comments</h2>
-        <CommentForm handleAddComment={handleAddComment} />
+			<section>
+				<h2>Comments</h2>
+				<CommentForm handleAddComment={handleAddComment} />
 
-        {product.comments?.length > 0 ? (
-          product.comments.map((comment) => (
-            <article key={comment._id}>
-              <header>
-                <div>
-                  <p>
-                    {comment.author?.username || "Anonymous"} posted on{" "}
-                    {new Date(comment.createdAt).toLocaleDateString()}
-                  </p>
-                  {comment.author?._id === user?._id && (
-                    <>
-                      <Link
-                        to={`/market/${marketId}/comments/${comment._id}/edit`}
-                      >
-                        Edit
-                      </Link>
-                      <button onClick={() => props.handleDeleteComment(comment._id)}>
-                        Delete
-                      </button>
-                    </>
-                  )}
-                </div>
-              </header>
-              <p>{comment.text}</p>
-            </article>
-          ))
-        ) : (
-          <p>No comments yet.</p>
-        )}
-      </section>
-    </main>
-  );
+				{product.comments?.length > 0 ? (
+					product.comments.map((comment) => (
+						<article key={comment._id}>
+							<header>
+								<div>
+									<p>
+										{comment.author?.username || "Anonymous"} posted on{" "}
+										{new Date(comment.createdAt).toLocaleDateString()}
+									</p>
+									{comment.author?._id === user?._id && (
+										<>
+											<Link
+												to={`/market/${marketId}/comments/${comment._id}/edit`}
+											></Link>
+											<button
+												onClick={() => handleDeleteComment(comment._id)}
+											>
+												Delete
+											</button>
+										</>
+									)}
+								</div>
+							</header>
+							<p>{comment.text}</p>
+						</article>
+					))
+				) : (
+					<p>No comments yet.</p>
+				)}
+			</section>
+		</main>
+	);
 };
 
 export default ProductDetails;
