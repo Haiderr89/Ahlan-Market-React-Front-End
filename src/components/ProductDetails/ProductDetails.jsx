@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import * as marketService from "../../services/marketService";
@@ -44,6 +45,7 @@ const ProductDetails = (props) => {
 		}
 	};
 
+
   const handleDeleteComment = async (commentId) => {
     console.log('commentId:', commentId);
     // Eventually the service function will be called upon here
@@ -59,6 +61,35 @@ const ProductDetails = (props) => {
     //   ...marketId,
     //   comments: product.comments.filter((comment) => comment._id !== commentId),
     // });
+  };
+
+  // Handle product deletion with confirmation
+  const handleDeleteProduct = async (marketId) => {
+    const result = await Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+      cancelButtonText: 'Cancel',
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await props.handleDeleteProduct(marketId);
+        Swal.fire(
+          'Deleted!',
+          'Your product has been deleted.',
+          'success'
+        );
+      } catch (error) {
+        Swal.fire(
+          'Error!',
+          'There was an issue deleting the product.',
+          'error'
+        );
+      }
+    }
   };
 
 	if (!product) return <main>Loading...</main>;
@@ -102,7 +133,7 @@ const ProductDetails = (props) => {
 								</button>
 								<button
 									className="btn btn-danger"
-									onClick={() => props.handleDeleteProduct(marketId)}
+									onClick={() => handleDeleteProduct(marketId)}
 								>
 									Delete
 								</button>
