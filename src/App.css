@@ -33,6 +33,20 @@
   margin-left: 20px;
 }
 
+form {
+  border: black solid 1px;
+  background-color: aqua;
+}
+
+input#confirm {
+  margin-right: 80px;
+}
+label {
+  margin-top: 15px;
+  margin-right: 50px;
+}
+
+
 /* .logo {
   height: 6em;
   padding: 1.5em;

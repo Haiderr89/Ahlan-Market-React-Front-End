@@ -45,7 +45,7 @@ const NavBar = ({ handleSignout }) => {
 								<li className="nav-item">
 									<Link
 										className="nav-link"
-										to="/auth/sign-out"
+										to="/"
 										onClick={handleSignout}
 									>
 										Sign Out
