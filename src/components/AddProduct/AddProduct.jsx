@@ -57,7 +57,7 @@ const addProduct = (props) => {
             />
           </div>
           <div class="col-md-5 mb-3">
-            <label htmlFor="text-input">Product Price</label>
+            <label htmlFor="text-input">Product Price ($)</label>
             <input
               required
               type="number"

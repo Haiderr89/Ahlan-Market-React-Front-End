@@ -9,6 +9,7 @@ import * as authService from '../src/services/authService'; // import the authse
 import * as marketService from '../src/services/marketService'
 import ProductList from './components/productList/ProductList';
 import AddProduct from './components/AddProduct/AddProduct';
+import ProductDetails from './components/ProductDetails/ProductDetails';
 
 
 export const AuthedUserContext = createContext(null);
@@ -39,6 +40,21 @@ const App = () => {
 		if (user) fetchAllMarkets();
 	}, [user]);
 
+  const handleDeleteProduct = async (productId) => {
+    const deletedProduct = await marketService.deleteProduct(productId);
+
+    setMarket(market.filter((market) => market._id !== deletedProduct._id));
+    navigate('/market');
+  };
+
+  const handleUpdateProduct = async (productId, productFormData) => {
+    const updatedProduct = await marketService.update(productId, productFormData);
+  
+    setMarket(market.map((market) => (productId === market._id ? updatedProduct : market)));
+  
+    navigate(`/hoots/${productId}`);
+  };
+
   return (
     <>
       <AuthedUserContext.Provider value={user}>
@@ -53,6 +69,7 @@ const App = () => {
           <Route path="/signin" element={<SigninForm setUser={setUser} />} />
           <Route path="/market" element={<ProductList market={market}/>} />
           <Route path="/market/new" element={<AddProduct handleAddProduct={handleAddProduct}/>} />
+          <Route path="/market/:marketId" element={<ProductDetails />} />
         </Routes>
       </AuthedUserContext.Provider>
     </>

@@ -1,66 +1,36 @@
-import { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../App.css";
 import { Link } from "react-router-dom";
+import styles from "./ProductList.module.css";
 
 const ProductList = (props) => {
 	return (
-		<main>
-			{props.market.map((market) => (
-				<div class="album py-5 bg-light">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-4">
-								<div class="card mb-4 shadow-sm">
-									<svg
-										class="bd-placeholder-img card-img-top"
-										width="100%"
-										height="225"
-										xmlns="http://www.w3.org/2000/svg"
-										preserveAspectRatio="xMidYMid slice"
-										focusable="false"
-										role="img"
-										aria-label="Placeholder: Thumbnail"
-									>
-										<title>Placeholder</title>
-										<rect width="100%" height="100%" fill="#55595c"></rect>
-										<text x="50%" y="50%" fill="#eceeef" dy=".3em">
-											Thumbnail
-										</text>
-									</svg>
-									<div class="card-body">
-										<p key={market._id}>
-											<h1>{market.name}</h1>
-											<h2>{market.price}</h2>
-											{market.category}
-										</p>
-
-										<div class="d-flex justify-content-between align-items-center">
-											<div class="btn-group">
-												<button
-													type="button"
-													class="btn btn-sm btn-outline-secondary"
-												>
-													<Link key={market._id} to={`/market/${market._id}`}>
-														View
-													</Link>
-												</button>
-												<button
-													type="button"
-													class="btn btn-sm btn-outline-secondary"
-												>
-													Edit
-												</button>
-											</div>
-											<small class="text-muted">9 mins</small>
-										</div>
+		<main className="py-5 bg-light">
+			<div className="container">
+				<div className={`row ${styles.productList}`}>
+					{props.market.map((market) => (
+						<div key={market._id} className="col-md-3">
+							<div className={`${styles.cardWrapper} card mb-4 shadow-sm`}>
+								<div className={styles.imageBox}>
+									<img
+										src={market.image || "https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600nw-1037719192.jpg"}
+										alt={market.name}
+										className="card-img-top"
+									/>
+									<div className={styles.overlay}>
+										<h1 className="h5">{market.name}</h1>
+										<h2 className="h6">${market.price}</h2>
+										<p>{market.category}</p><br />
+										<Link to={`/market/${market._id}`} className="btn btn-sm btn-outline-light">
+											View
+										</Link>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+					))}
 				</div>
-			))}
+			</div>
 		</main>
 	);
 };

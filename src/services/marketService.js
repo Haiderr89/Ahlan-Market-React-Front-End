@@ -41,8 +41,42 @@ const show = async (marketId) => {
     }
   };
   
+  const deleteProduct = async (productId) => {
+    try {
+      const res = await fetch(`${BASE_URL}/${productId}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //comment 
+  const createComment = async (productId, commentFormData) => {
+    try {
+      const res = await fetch(`${BASE_URL}/${productId}/comments`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(commentFormData),
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
   export { 
     index,
     create,
-    show
+    show,
+    deleteProduct,
+    createComment
    };
