@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import * as marketService from "../../services/marketService";
@@ -42,6 +43,35 @@ const ProductDetails = (props) => {
     }
   };
 
+  // Handle product deletion with confirmation
+  const handleDeleteProduct = async (marketId) => {
+    const result = await Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+      cancelButtonText: 'Cancel',
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await props.handleDeleteProduct(marketId);
+        Swal.fire(
+          'Deleted!',
+          'Your product has been deleted.',
+          'success'
+        );
+      } catch (error) {
+        Swal.fire(
+          'Error!',
+          'There was an issue deleting the product.',
+          'error'
+        );
+      }
+    }
+  };
+
   if (!product) return <main>Loading...</main>;
 
   return (
@@ -73,8 +103,13 @@ const ProductDetails = (props) => {
             )}
             {product.author?._id === user?._id && (
               <>
-                <button className="btn btn-warning"><Link to={`/market/${marketId}/edit`} style={{color:"white"}}>Edit</Link></button>
-                <button className="btn btn-danger" onClick={() => props.handleDeleteProduct(marketId)}>
+                <button className="btn btn-warning">
+                  <Link to={`/market/${marketId}/edit`} style={{color:"white"}}>Edit</Link>
+                </button>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => handleDeleteProduct(marketId)} // Use SweetAlert2 for deletion
+                >
                   Delete
                 </button>
               </>
@@ -98,11 +133,6 @@ const ProductDetails = (props) => {
                   </p>
                   {comment.author?._id === user?._id && (
                     <>
-                      <Link
-                        to={`/market/${marketId}/comments/${comment._id}/edit`}
-                      >
-                        Edit
-                      </Link>
                       <button onClick={() => props.handleDeleteComment(comment._id)}>
                         Delete
                       </button>
