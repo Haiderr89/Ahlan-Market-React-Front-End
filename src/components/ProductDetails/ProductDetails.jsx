@@ -124,8 +124,8 @@ const ProductDetails = (props) => {
 					<div>
 						{product.author ? (
 							<p>
-								{product.author.username} posted on{" "}
-								{new Date(product.createdAt).toLocaleDateString()}
+								posted on{" "} 
+								{new Date(product.createdAt).toLocaleDateString()} by {product.author.username} 
 							</p>
 						) : (
 							<p>Unknown Author</p>
@@ -153,7 +153,6 @@ const ProductDetails = (props) => {
 			</section>
 
 			<section>
-				<h2>Comments</h2>
 				<CommentForm handleAddComment={handleAddComment} />
 
 				{product.comments?.length > 0 ? (
@@ -162,14 +161,12 @@ const ProductDetails = (props) => {
 							<header>
 								<div>
 									<p>
-										{comment.author?.username || "Anonymous"} posted on{" "}
-										{new Date(comment.createdAt).toLocaleDateString()}
+                  posted on{" "} 
+										{new Date(comment.createdAt).toLocaleDateString()} by {comment.author?.username || "Anonymous"} 
 									</p>
 									{comment.author?._id === user?._id && (
 										<>
-											<Link
-												to={`/market/${marketId}/comments/${comment._id}/edit`}
-											></Link>
+											<Link to={`/market/${marketId}/comments/${comment._id}/edit`}></Link>
 											<button
 												onClick={() => handleDeleteComment(comment._id)}
 											>
