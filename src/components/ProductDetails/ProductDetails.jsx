@@ -29,21 +29,29 @@ const ProductDetails = (props) => {
 		fetchProduct();
 	}, [marketId]);
 
-	const handleAddComment = async (commentFormData) => {
-		try {
-			const newComment = await marketService.createComment(
-				marketId,
-				commentFormData
-			);
-
-			setProduct((prevProduct) => ({
-				...prevProduct,
-				comments: [...(prevProduct.comments || []), newComment],
-			}));
-		} catch (error) {
-			console.error("Error adding comment:", error);
-		}
-	};
+  const handleAddComment = async (commentFormData) => {
+    try {
+      const newComment = await marketService.createComment(marketId, commentFormData);
+      setProduct((prevProduct) => ({
+        ...prevProduct,
+        comments: [...(prevProduct.comments || []), newComment],
+      }));
+  
+      // // Show SweetAlert confirmation when comment is added
+      // Swal.fire(
+      //   'Comment Added!',
+      //   'Your comment has been successfully added.',
+      //   'success'
+      // );
+  
+      // This will show "SweetAlert2 is working!" for testing
+      Swal.fire("Comment Added!");
+  
+    } catch (error) {
+      console.error("Error adding comment:", error);
+    }
+  };
+  
 
 
   const handleDeleteComment = async (commentId) => {
@@ -56,6 +64,7 @@ const ProductDetails = (props) => {
 		comments: product.comments.filter((comment) => comment._id !== commentId),
 	}));
 
+  Swal.fire("Comment Deleted!");
 
     // setProduct({
     //   ...marketId,
