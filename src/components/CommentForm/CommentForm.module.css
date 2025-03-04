@@ -25,11 +25,12 @@ form {
 button {
   margin-top: 10px;
   padding: 10px 15px;
-  background-color: blue;
-  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  /* width: 7vw;
+  height: 5vh; */
+  align-items: center;
 }
 
 button:hover {

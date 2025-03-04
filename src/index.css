@@ -70,7 +70,7 @@ button:focus-visible {
 html, body {
   margin: 0;
   height: 100%;
-  background-color: #f2f4f8;
+  /* background-color: #f2f4f8; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: sans-serif;

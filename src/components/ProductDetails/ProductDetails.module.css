@@ -6,3 +6,18 @@ form{
   align-items: center;
 }
 
+
+button {
+  /* margin-top: 10px;
+  padding: 10px 15px; */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 7vw;
+  height: 5vh;
+  align-items: center;
+}
+
+button:hover {
+  background-color: grey
+}

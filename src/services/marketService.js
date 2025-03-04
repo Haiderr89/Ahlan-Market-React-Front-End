@@ -55,6 +55,22 @@ const show = async (marketId) => {
     }
   };
 
+  async function update(marketId, marketFormData) {
+    try {
+      const res = await fetch(`${BASE_URL}/${marketId}`, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(marketFormData),
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   //comment 
   const createComment = async (marketId, commentFormData) => {
     try {
@@ -78,5 +94,6 @@ const show = async (marketId) => {
     create,
     show,
     deleteProduct,
-    createComment
+    createComment,
+    update,
    };

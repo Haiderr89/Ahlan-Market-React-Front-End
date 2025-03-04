@@ -58,6 +58,8 @@ const ProductDetails = (props) => {
             style={{height:"60%"}}
           />
 
+          <h2>${product.price}</h2>
+
           <p>{product.description}</p>
 
           <div>
@@ -71,8 +73,8 @@ const ProductDetails = (props) => {
             )}
             {product.author?._id === user?._id && (
               <>
-                <Link to={`/market/${marketId}/edit`}>Edit</Link>
-                <button onClick={() => props.handleDeleteProduct(marketId)}>
+                <button className="btn btn-warning"><Link to={`/market/${marketId}/edit`} style={{color:"white"}}>Edit</Link></button>
+                <button className="btn btn-danger" onClick={() => props.handleDeleteProduct(marketId)}>
                   Delete
                 </button>
               </>

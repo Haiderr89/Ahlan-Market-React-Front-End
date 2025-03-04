@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import * as marketService from "../../services/marketService";
 import styles from "./marketService.module.css";
 
-const addProduct = (props) => {
+const AddProduct = (props) => {
   const [formData, setFormData] = useState({
     name: "",
     price: "",
@@ -111,4 +111,4 @@ const addProduct = (props) => {
   );
 };
 
-export default addProduct;
+export default AddProduct;
