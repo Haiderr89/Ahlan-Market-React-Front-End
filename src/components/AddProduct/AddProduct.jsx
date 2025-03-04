@@ -1,6 +1,4 @@
-// import { Link } from "react-router-dom";
-// import { AuthedUserContext } from "../../App";
-// import { useContext } from "react";
+import Swal from 'sweetalert2';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../App.css";
 import { useState, useEffect } from "react";
@@ -31,21 +29,39 @@ const AddProduct = (props) => {
     if (marketId) fetchProduct();
   }, [marketId]);
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
-    if (marketId) {
-      props.handleUpdateProduct(marketId, formData);
-    } else {
-      props.handleAddProduct(formData);
+    try {
+      if (marketId) {
+        await props.handleUpdateProduct(marketId, formData);
+        Swal.fire(
+          'Product Updated!',
+          'Your product has been successfully updated.',
+          'success'
+        );
+      } else {
+        await props.handleAddProduct(formData);
+        Swal.fire(
+          'Product Added!',
+          'Your product has been successfully added.',
+          'success'
+        );
+      }
+    } catch (error) {
+      Swal.fire(
+        'Error!',
+        'There was an issue with adding or updating the product.',
+        'error'
+      );
     }
   };
 
   return (
     <main className={styles.container}>
       <h1>{marketId ? "Edit Product" : "New Product"}</h1>
-      <form onSubmit={handleSubmit} class="needs-validation">
-        <div class="row">
-          <div class="col-md-7 mb-3">
+      <form onSubmit={handleSubmit} className="needs-validation">
+        <div className="row">
+          <div className="col-md-7 mb-3">
             <label htmlFor="title-input">Product Name</label>
             <input
               required
@@ -56,7 +72,7 @@ const AddProduct = (props) => {
               onChange={handleChange}
             />
           </div>
-          <div class="col-md-5 mb-3">
+          <div className="col-md-5 mb-3">
             <label htmlFor="text-input">Product Price ($)</label>
             <input
               required
@@ -69,8 +85,8 @@ const AddProduct = (props) => {
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-md-6 mb-3">
+        <div className="row">
+          <div className="col-md-6 mb-3">
             <label htmlFor="text-input">Product Image</label>
             <input
               required
@@ -81,7 +97,7 @@ const AddProduct = (props) => {
               onChange={handleChange}
             />
           </div>
-          <div class="col-md-6 mb-3">
+          <div className="col-md-6 mb-3">
             <label htmlFor="category-input">Category</label>
             <select
               required

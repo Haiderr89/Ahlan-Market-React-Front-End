@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import * as marketService from "../../services/marketService";
