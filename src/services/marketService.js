@@ -41,9 +41,9 @@ const show = async (marketId) => {
     }
   };
   
-  const deleteProduct = async (productId) => {
+  const deleteProduct = async (marketId) => {
     try {
-      const res = await fetch(`${BASE_URL}/${productId}`, {
+      const res = await fetch(`${BASE_URL}/${marketId}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -56,9 +56,9 @@ const show = async (marketId) => {
   };
 
   //comment 
-  const createComment = async (productId, commentFormData) => {
+  const createComment = async (marketId, commentFormData) => {
     try {
-      const res = await fetch(`${BASE_URL}/${productId}/comments`, {
+      const res = await fetch(`${BASE_URL}/${marketId}/comments`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,

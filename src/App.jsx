@@ -40,19 +40,19 @@ const App = () => {
 		if (user) fetchAllMarkets();
 	}, [user]);
 
-  const handleDeleteProduct = async (productId) => {
-    const deletedProduct = await marketService.deleteProduct(productId);
+  const handleDeleteProduct = async (marketId) => {
+    const deletedProduct = await marketService.deleteProduct(marketId);
 
     setMarket(market.filter((market) => market._id !== deletedProduct._id));
     navigate('/market');
   };
 
-  const handleUpdateProduct = async (productId, productFormData) => {
-    const updatedProduct = await marketService.update(productId, productFormData);
+  const handleUpdateProduct = async (marketId, productFormData) => {
+    const updatedProduct = await marketService.update(marketId, productFormData);
   
-    setMarket(market.map((market) => (productId === market._id ? updatedProduct : market)));
+    setMarket(market.map((market) => (marketId === market._id ? updatedProduct : market)));
   
-    navigate(`/hoots/${productId}`);
+    navigate(`/market/${marketId}`);
   };
 
   return (

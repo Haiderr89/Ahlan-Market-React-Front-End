@@ -11,26 +11,26 @@ import { AuthedUserContext } from "../../App";
 import CommentForm from "../CommentForm/CommentForm";
 
 const ProductDetails = (props) => {
-  const { productId } = useParams();
+  const { marketId } = useParams();
   const [product, setProduct] = useState(null);
   const user = useContext(AuthedUserContext);
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const productData = await marketService.show(productId);
+        const productData = await marketService.show(marketId);
         setProduct(productData);
       } catch (error) {
         console.error("Error fetching product:", error);
       }
     };
     fetchProduct();
-  }, [productId]);
+  }, [marketId]);
 
   const handleAddComment = async (commentFormData) => {
     try {
       const newComment = await marketService.createComment(
-        productId,
+        marketId,
         commentFormData
       );
       setProduct((prevProduct) => ({
@@ -48,16 +48,14 @@ const ProductDetails = (props) => {
     <main className={styles.container}>
       <section>
         <header>
-          <p>{product.category?.toUpperCase()}</p>
           <h1>{product.name}</h1>
+          <p>{product.category?.toUpperCase()}</p>
 
           <img
-            src={
-              product.image ||
-              "https://via.placeholder.com/300" // Default placeholder if no image
-            }
+            src={product.image}
             alt={product.name}
             className={styles.productImage}
+            style={{height:"60%"}}
           />
 
           <p>{product.description}</p>
@@ -73,8 +71,8 @@ const ProductDetails = (props) => {
             )}
             {product.author?._id === user?._id && (
               <>
-                <Link to={`/products/${productId}/edit`}>Edit</Link>
-                <button onClick={() => props.handleDeleteProduct(productId)}>
+                <Link to={`/market/${marketId}/edit`}>Edit</Link>
+                <button onClick={() => props.handleDeleteProduct(marketId)}>
                   Delete
                 </button>
               </>
@@ -99,7 +97,7 @@ const ProductDetails = (props) => {
                   {comment.author?._id === user?._id && (
                     <>
                       <Link
-                        to={`/products/${productId}/comments/${comment._id}/edit`}
+                        to={`/market/${marketId}/comments/${comment._id}/edit`}
                       >
                         Edit
                       </Link>

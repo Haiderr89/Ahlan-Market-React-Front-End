@@ -17,7 +17,7 @@ const addProduct = (props) => {
     category: "",
   });
 
-  const { productId } = useParams();
+  const { marketId } = useParams();
 
   const handleChange = (evt) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
@@ -25,16 +25,16 @@ const addProduct = (props) => {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const productData = await marketService.show(productId);
+      const productData = await marketService.show(marketId);
       setFormData(productData);
     };
-    if (productId) fetchProduct();
-  }, [productId]);
+    if (marketId) fetchProduct();
+  }, [marketId]);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    if (productId) {
-      props.handleUpdateProduct(productId, formData);
+    if (marketId) {
+      props.handleUpdateProduct(marketId, formData);
     } else {
       props.handleAddProduct(formData);
     }
@@ -42,7 +42,7 @@ const addProduct = (props) => {
 
   return (
     <main className={styles.container}>
-      <h1>{productId ? "Edit Product" : "New Product"}</h1>
+      <h1>{marketId ? "Edit Product" : "New Product"}</h1>
       <form onSubmit={handleSubmit} class="needs-validation">
         <div class="row">
           <div class="col-md-7 mb-3">
