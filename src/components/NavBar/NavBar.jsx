@@ -10,7 +10,7 @@ const NavBar = ({ handleSignout }) => {
 		<nav className="navbar navbar-expand-lg">
 			<div className="container-fluid cont">
 				<Link className="navbar-brand" to="/">
-					AhlanMarket
+					/
 				</Link>
 				<button
 					className="navbar-toggler"
