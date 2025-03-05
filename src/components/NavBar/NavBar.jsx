@@ -12,7 +12,6 @@ const NavBar = ({ handleSignout }) => {
   const handleSignoutWithConfirmation = () => {
     Swal.fire({
       title: "Do you want to log out?",
-    //   text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -20,7 +19,7 @@ const NavBar = ({ handleSignout }) => {
       confirmButtonText: "Yes",
     }).then((result) => {
       if (result.isConfirmed) {
-        handleSignout(); // Call the signout function if confirmed
+        handleSignout();
         Swal.fire({
           title: "Signed Out!",
           text: "You have been successfully signed out.",
@@ -79,7 +78,7 @@ const NavBar = ({ handleSignout }) => {
                     <Link
                       className="nav-link"
                       to="/"
-                      onClick={handleSignoutWithConfirmation} // Use the new confirmation function
+                      onClick={handleSignoutWithConfirmation} 
                     >
                       Sign Out
                     </Link>

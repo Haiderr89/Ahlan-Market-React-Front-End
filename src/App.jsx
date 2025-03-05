@@ -69,7 +69,6 @@ const App = () => {
           <Route path="/signin" element={<SigninForm setUser={setUser} />} />
           <Route path="/market" element={<ProductList market={market}/>} />
           <Route path="/market/new" element={<AddProduct handleAddProduct={handleAddProduct}/>} />
-          {/* <Route path="/market/:marketId" element={<ProductDetails />} /> */}
           <Route path="/market/:marketId/edit" element={<AddProduct handleUpdateProduct={handleUpdateProduct}/>} />
           <Route path="/market/:marketId" element={<ProductDetails handleDeleteProduct={handleDeleteProduct} />} />
           </Routes>

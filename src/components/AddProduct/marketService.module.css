@@ -27,25 +27,6 @@
     margin: 7px 0px 14px 0px;
   }
   
-  /* .container button {
-    color: white;
-    font-weight: 600;
-    margin: 21px 0px 0px 0px;
-    background: var(--primary);
-  } */
-  
-  /* input:focus, select:focus, textarea:focus {
-    outline: none;
-    border: 1px solid var(--primary);
-  } */
-
-
-  /* form{
-    width: 45vw;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-  } */
 
  form{
   width: 60vw;

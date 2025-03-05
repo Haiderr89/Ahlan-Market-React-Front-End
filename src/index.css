@@ -29,7 +29,7 @@ html, body {
 }
 
 body {
-  display: block; /* Remove flex constraints */
+  display: block; 
 }
 
 #root {
@@ -41,7 +41,6 @@ body {
   font-style: normal;
 }
 
-/* Typography */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;

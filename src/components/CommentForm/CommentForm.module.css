@@ -13,15 +13,7 @@ form {
   border: none;
 }
 
-/* textarea {
-  width: 100%;
-  min-height: 100px;
-  margin-top: 10px;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  resize: none;
-} */
+
 
 button {
   margin-top: 10px;
@@ -29,15 +21,12 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  /* width: 7vw;
-  height: 5vh; */
+
   align-items: center;
 }
 
 button:hover {
-  /* font-size:20px; */
-  /* font-weight:bold; */
-  /* transition: all 1s; */
+
   background-color: rgb(58, 58, 58);
 }
 

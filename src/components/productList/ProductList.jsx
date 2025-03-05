@@ -37,7 +37,6 @@ const ProductList = (props) => {
                     />
                     <div className={styles.overlay}>
                       <h3>${market.price}</h3>
-                      {/* <p>{market.category}</p> */}
                       <br />
                       <span className="btn btn-sm btn-outline-light">View</span>
                     </div>
