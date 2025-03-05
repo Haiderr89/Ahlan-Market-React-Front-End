@@ -17,9 +17,9 @@ const CommentForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Comments</h2>
-      <label htmlFor="text-input">Your comment:</label>
+    <form onSubmit={handleSubmit} style={{ maxHeight: "300px", // Set a fixed height for the comments container
+    }}>
+      <h2>Add Comment</h2>
       <textarea
         required
         type="text"
@@ -29,6 +29,7 @@ const CommentForm = (props) => {
         onChange={handleChange}
       />
       <button type="submit" style={{width:"20vw", height: "10vh"}} className='bn'>SUBMIT COMMENT</button>
+      
     </form>
   );
 };

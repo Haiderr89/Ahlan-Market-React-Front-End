@@ -10,24 +10,25 @@ import { AuthedUserContext } from "../../App";
 
 // Components
 import CommentForm from "../CommentForm/CommentForm";
+import { Row } from 'react-bootstrap';
 
 const ProductDetails = (props) => {
-	const { marketId } = useParams();
-	const [product, setProduct] = useState(null);
-  	const [commentdelete, setCommentdelete] = useState(null);
-	const user = useContext(AuthedUserContext);
+  const { marketId } = useParams();
+  const [product, setProduct] = useState(null);
+  const [commentdelete, setCommentdelete] = useState(null);
+  const user = useContext(AuthedUserContext);
 
-	useEffect(() => {
-		const fetchProduct = async () => {
-			try {
-				const productData = await marketService.show(marketId);
-				setProduct(productData);
-			} catch (error) {
-				console.error("Error fetching product:", error);
-			}
-		};
-		fetchProduct();
-	}, [marketId]);
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const productData = await marketService.show(marketId);
+        setProduct(productData);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    };
+    fetchProduct();
+  }, [marketId]);
 
   const handleAddComment = async (commentFormData) => {
     try {
@@ -36,43 +37,21 @@ const ProductDetails = (props) => {
         ...prevProduct,
         comments: [...(prevProduct.comments || []), newComment],
       }));
-  
-      // // Show SweetAlert confirmation when comment is added
-      // Swal.fire(
-      //   'Comment Added!',
-      //   'Your comment has been successfully added.',
-      //   'success'
-      // );
-  
-      // This will show "SweetAlert2 is working!" for testing
       Swal.fire("Comment Added!");
-  
     } catch (error) {
       console.error("Error adding comment:", error);
     }
   };
-  
-
 
   const handleDeleteComment = async (commentId) => {
-    console.log('commentId:', commentId);
-    // Eventually the service function will be called upon here
-	const deletedComment = await marketService.deleteComment(marketId, commentId)
-
-	setProduct((prevProduct) => ({
-		...prevProduct,
-		comments: product.comments.filter((comment) => comment._id !== commentId),
-	}));
-
-  Swal.fire("Comment Deleted!");
-
-    // setProduct({
-    //   ...marketId,
-    //   comments: product.comments.filter((comment) => comment._id !== commentId),
-    // });
+    const deletedComment = await marketService.deleteComment(marketId, commentId);
+    setProduct((prevProduct) => ({
+      ...prevProduct,
+      comments: product.comments.filter((comment) => comment._id !== commentId),
+    }));
+    Swal.fire("Comment Deleted!");
   };
 
-  // Handle product deletion with confirmation
   const handleDeleteProduct = async (marketId) => {
     const result = await Swal.fire({
       title: 'Are you sure?',
@@ -86,56 +65,53 @@ const ProductDetails = (props) => {
     if (result.isConfirmed) {
       try {
         await props.handleDeleteProduct(marketId);
-        Swal.fire(
-          'Deleted!',
-          'Your product has been deleted.',
-          'success'
-        );
+        Swal.fire('Deleted!', 'Your product has been deleted.', 'success');
       } catch (error) {
-        Swal.fire(
-          'Error!',
-          'There was an issue deleting the product.',
-          'error'
-        );
+        Swal.fire('Error!', 'There was an issue deleting the product.', 'error');
       }
     }
   };
 
-	if (!product) return <main>Loading...</main>;
+  if (!product) return <main>Loading...</main>;
 
-	return (
-		<main className={styles.container}>
-			<section>
-				<header>
-					<h1>{product.name}</h1>
-					<p>{product.category?.toUpperCase()}</p>
+  return (
+	
+    <div className="container">
+      <div className="row">
+        <div className="col-md-5" style={{
+			marginTop:50, 
+			backgroundColor:"rgb(195, 193, 243)", 
+			boxShadow: "0 4px 6px rgba(0, 0, 0, 0.4)",
+			borderRadius:8,
+			padding:20,
+			width: "100%", height:"90%"
+			}}>
+          <div className="project-info-box mt-0">
+            <h1>{product.name || "No Title Available"}</h1> {/* Title Added Here */}
+            <h3 style={{marginTop:50, textAlign:"left"}}>product details</h3>
+            <p className="mb-20" style={{textAlign:"left"}}>{product.description}</p>
+          </div>
 
-					<img id="det"
-            style={{width: "40%"}}
-						src={product.image}
-						alt={product.name}
-						// className={styles.productImage}
-					/>
+          <div className="project-info-box">
+            {/* <p style={{textAlign:"left"}}><b>Posted Date:</b> {new Date(product.createdAt).toLocaleDateString()}</p> */}
+            {/* <p style={{textAlign:"left"}}><b>Author:</b> {product.author?.username || "Anonymous"}</p> */}
+            <p className="mb-0" style={{textAlign:"left"}}><b>Price:</b> ${product.price}</p>
+			<p style={{textAlign:"left"}}>Category: {product.category?.toUpperCase()}</p>
+          </div>
+		  
+        </div>
 
-					<h2>${product.price}</h2>
-
-					<p>{product.description}</p>
-
-					<div>
-						{product.author ? (
-							<p>
-								posted on{" "} 
-								{new Date(product.createdAt).toLocaleDateString()} by {product.author.username} 
-							</p>
-						) : (
-							<p>Unknown Author</p>
-						)}
-						{product.author?._id === user?._id && (
+        <div className="col-md-7" style={{marginTop:50, marginLeft:"auto", marginRight:"auto"}}>
+          <img src={product.image} alt={product.name} className="rounded" style={{ width: "100%", height:"90%" }} />
+          <div className="project-info-box">
+            {/* <p><b>Categories:</b> {product.category?.toUpperCase()}</p> */}
+			<p className="mb-10" style={{marginTop:15}}><b>Posted on</b> {new Date(product.createdAt).toLocaleDateString()} by {product.author?.username} </p>
+			{product.author?._id === user?._id && (
 							<>
-								<button className="btn btn-warning">
+								<button className="btn btn-warning" style={{margin:20}}>
 									<Link
 										to={`/market/${marketId}/edit`}
-										style={{ color: "white" }}
+										style={{ color: "white"}}
 									>
 										Edit
 									</Link>
@@ -148,42 +124,84 @@ const ProductDetails = (props) => {
 								</button>
 							</>
 						)}
-					</div>
-				</header>
-			</section>
+          </div>
+        </div>
+      </div>
 
-			<section>
-				<CommentForm handleAddComment={handleAddComment} />
+	  <section style={{ marginTop: "20px",
+	  display:"flex"
+ }}>
+  <br />
+  <br />
+  <CommentForm handleAddComment={handleAddComment} />
+  <br />
+  <div
+    style={{
+      maxHeight: "300px", // Set a fixed height for the comments container
+      overflowY: "auto", // Enable vertical scrolling
+      border: "1px solid #ccc", // Optional: Add a border
+      borderRadius: "8px", // Optional: Add rounded corners
+      padding: "10px", // Optional: Add padding
+	  width:"600px",
+	  background:"white"
 
-				{product.comments?.length > 0 ? (
-					product.comments.map((comment) => (
-						<article key={comment._id}>
-							<header>
-								<div>
-									<p>
-                  posted on{" "} 
-										{new Date(comment.createdAt).toLocaleDateString()} by {comment.author?.username || "Anonymous"} 
-									</p>
-									{comment.author?._id === user?._id && (
-										<>
-                    <div className='buttons'>
-											<Link to={`/market/${marketId}/comments/${comment._id}/edit`}></Link>
-  
-											<button onClick={() => handleDeleteComment(comment._id)}> Delete </button>
-                    </div>
-										</>
-									)}
-								</div>
-							</header>
-							<p>{comment.text}</p>
-						</article>
-					))
-				) : (
-					<p>No comments yet.</p>
-				)}
-			</section>
-		</main>
-	);
+    }}
+  >
+    {product.comments?.length > 0 ? (
+      product.comments.map((comment) => (
+        <article
+          key={comment._id}
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between", // Space out the content
+            gap: "20px",
+            padding: "10px",
+            borderBottom: "1px solid #eee", // Lighter border for separation
+          }}
+        >
+          <div style={{ flex: 1 }}>
+            <p style={{ margin: 0, fontWeight: "bold" }}>
+              {comment.author?.username}
+            </p>
+            <p style={{ margin: 0, color: "#666" }}>
+              {new Date(comment.createdAt).toLocaleDateString()}
+            </p>
+            <p style={{ margin: 0 }}>{comment.text}</p>
+          </div>
+          {comment.author?._id === user?._id && (
+            <div className="buttons">
+              {/* <Link
+                to={`/market/${marketId}/comments/${comment._id}/edit`}
+              >
+              </Link> */}
+              <button
+                onClick={() => handleDeleteComment(comment._id)}
+				className='btn btn-danger'
+                style={{
+                //   background: "red",
+                //   color: "white",
+                //   border: "none",
+                //   padding: "5px 10px",
+                //   borderRadius: "4px",
+                  cursor: "pointer",
+                }}
+              >
+                Delete
+              </button>
+            </div>
+          )}
+        </article>
+      ))
+    ) : (
+      <p style={{ textAlign: "center", color: "#666" }}>No comments yet.</p>
+    )}
+  </div>
+</section>
+<br /><br />
+    </div>
+  );
 };
 
 export default ProductDetails;
