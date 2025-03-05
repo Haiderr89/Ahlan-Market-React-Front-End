@@ -1,0 +1,73 @@
+.productList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.cardWrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.imageBox {
+  position: relative;
+  width: 100%;
+}
+
+.imageBox img {
+  width: 100%;
+  height: 225px;
+  object-fit: cover;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  text-align: center;
+}
+
+.imageBox:hover .overlay {
+  opacity: 1;
+}
+
+.overlay h1, .overlay h2, .overlay p {
+  margin: 5px 0;
+}
+
+.scrollableRow {
+  display: flex;
+  flex-wrap: nowrap; /* Prevent wrapping to the next line */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #888 #f1f1f1; /* For Firefox */
+}
+
+.scrollableRow::-webkit-scrollbar {
+  height: 8px; /* Height of the scrollbar */
+}
+
+.scrollableRow::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+}
+
+.scrollableRow::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar */
+  border-radius: 4px; /* Rounded corners */
+}
+
+.scrollableRow::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar on hover */
+}

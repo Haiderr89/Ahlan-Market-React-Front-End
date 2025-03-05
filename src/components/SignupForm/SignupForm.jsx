@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as authService from '../../services/authService';
+import "../../App.css";
 
 const SignupForm = (props) => {
   const navigate = useNavigate();
@@ -38,9 +39,11 @@ const SignupForm = (props) => {
 
   return (
     <main>
+      <br /><br />
       <h1>Sign Up</h1>
-      <p>{message}</p>
+      {/* <p>{message}</p> */}
       <form onSubmit={handleSubmit}>
+      <img src="src/assets/enhanced_image-8.png" width={300} height={200} style={{marginBottom:50}} alt="" />
         <div>
           <label htmlFor="username">Username:</label>
           <input
@@ -61,7 +64,7 @@ const SignupForm = (props) => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div style={{marginBottom:50}}>
           <label htmlFor="confirm">Confirm Password:</label>
           <input
             type="password"
@@ -72,10 +75,8 @@ const SignupForm = (props) => {
           />
         </div>
         <div>
-          <button disabled={isFormInvalid()}>Sign Up</button>
-          <Link to="/">
-            <button>Cancel</button>
-          </Link>
+          <button disabled={isFormInvalid()} style={{width:100}}>Sign Up</button>
+
         </div>
       </form>
     </main>
