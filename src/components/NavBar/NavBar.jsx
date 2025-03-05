@@ -5,6 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../../App.css";
 import styles from "./navbar.module.css";
 import Swal from "sweetalert2"; // Import SweetAlert2
+import logo from 'src/assets/image.png';
+
 
 const NavBar = ({ handleSignout }) => {
   const user = useContext(AuthedUserContext);
@@ -39,7 +41,7 @@ const NavBar = ({ handleSignout }) => {
         <div className="container-fluid cont">
           <Link className="navbar-brand" to="/">
             <img
-              src="src/assets/enhanced_image-8 copy.png"
+              src={logo}
               width={40}
               height={35}
               alt="the logo"
