@@ -123,7 +123,7 @@
   .testimonial article {
     margin: 5px;
     display: flex;
-    max-width: 525px;
+    max-width: 825px;
     border-radius: 5px;
     align-items: center;
     justify-content: center;
@@ -165,8 +165,8 @@
   }
   
   .testimonial article > p {
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 20px;
+    line-height: 50px;
   }
   
   .testimonial footer img {

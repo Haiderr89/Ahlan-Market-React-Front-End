@@ -27,17 +27,17 @@
     margin: 7px 0px 14px 0px;
   }
   
-  .container button {
+  /* .container button {
     color: white;
     font-weight: 600;
     margin: 21px 0px 0px 0px;
     background: var(--primary);
-  }
+  } */
   
-  input:focus, select:focus, textarea:focus {
+  /* input:focus, select:focus, textarea:focus {
     outline: none;
     border: 1px solid var(--primary);
-  }
+  } */
 
 
   /* form{
