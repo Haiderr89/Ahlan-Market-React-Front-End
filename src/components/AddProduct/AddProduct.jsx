@@ -122,7 +122,7 @@ const AddProduct = (props) => {
           value={formData.description}
           onChange={handleChange}
         />
-        <button type="submit">SUBMIT</button>
+        <button type="submit" className='btn btn-warning'>SUBMIT</button>
       </form>
     </main>
   );

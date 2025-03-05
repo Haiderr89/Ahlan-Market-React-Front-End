@@ -55,7 +55,7 @@ const ProductList = (props) => {
 
   return (
     <main className="py-5 bg-light">
-		<h1 style={{color:'red'}}>Shop</h1><br /><br />
+		<h1 style={{color:'rgb(98, 0, 235)', fontSize:"1000"}}>Shop</h1><br /><br />
       <div className="container">
         {renderScrollableList(newProducts, "New Products")}
         {renderScrollableList(usedProducts, "Used Products")}
