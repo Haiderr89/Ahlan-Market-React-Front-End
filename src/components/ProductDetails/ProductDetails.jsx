@@ -127,7 +127,7 @@ const ProductDetails = (props) => {
           </div>
         </div>
       </div>
-
+<br /><br /><br />
 	  <section style={{ marginTop: "20px",
 	  display:"flex"
  }}>

@@ -57,8 +57,8 @@ const AddProduct = (props) => {
   };
 
   return (
-    <main className={styles.container}>
-      <h1>{marketId ? "Edit Product" : "New Product"}</h1>
+    <main className={styles.container}><br />
+      <h1>{marketId ? "Edit Product" : "New Product"}</h1><br />
       <form onSubmit={handleSubmit} className="needs-validation">
         <div className="row">
           <div className="col-md-7 mb-3">
