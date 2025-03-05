@@ -1,4 +1,27 @@
-/* src/components/Landing/Landing.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Grechen+Fuemen&family=Jersey+25&family=Julius+Sans+One&family=Kenia&display=swap');
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-5%);
+  }
+
+  30% {
+    transform: translateY(10%);
+  }
+  100% {
+    transform: translateX(10);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateY(0%);
+  }
+
+  100% {
+    transform: translateY(20%);
+  }
+}
 
 .container {
     display: flex;
@@ -30,11 +53,17 @@
   }
   
   .about {
-    height: 430px;
-    background-color: white;
+    height: 500px;
+    color: white;
+    
+    background-image: url("https://images.unsplash.com/photo-1570101945621-945409a6370f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
     box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.15);
     -webkit-box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.15);
+  }
+  .about {
+    height: 650px;
+    padding: 30px;
   }
   
   .testimonial {
@@ -48,9 +77,13 @@
     padding: 50px 0px;
     align-items: center;
     flex-direction: column;
+    animation: 2s ease-out 0s 1 slideIn;
+    padding: 30px;
   }
   
   .about article {
+    margin-top: 100px;
+    text-align: center;
     width: 100%;
     max-width: 1000px;
   }
@@ -200,3 +233,4 @@
       min-width: 340px;
     }
   }
+

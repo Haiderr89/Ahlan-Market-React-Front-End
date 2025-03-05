@@ -13,30 +13,22 @@ const Dashboard = ({}) => {
 
 				<section className={styles.about}>
 					<header>
-						<h1>Welcome, {user.username}</h1>
-						<h3>HOO WE ARE</h3>
-						<h1>ABOUT US</h1>
+				
 					</header>
 					<article>
+						<h1>Ahlan, {user.username}!</h1>
 						<p>
-							Not everyone is a morning person. That's why we're building Hoot,
-							an open and inclusive place for night owls to share their ideas,
-							thoughts, and knowledge with one another. We provide a platform
-							for people to share ideas in the early hours of the morning when
-							owl brains work best. Hoot is a community of self-identifying owls
-							like you, that wants to make sure you always have something
-							interesting to say no matter what time of day it is. You no longer
-							have to worry about your troubles keeping you up during the day.
-							You can now blog about your favorite topics and connect with other
-							owls at night. With Hoot, it's never too late to post.
+							Not everyone wants to buy places from different sites and app. So why
+							not buy all kinds? That's why AhlanMarket exist! Not only can you buy
+							items sold by famous companies. Services? We got it! New products? Yes we got it!
+							Used products? You name it! All can be bought today in AhlanMarket
 						</p>
 					</article>
 				</section>
 
 				<section className={styles.testimonial}>
 					<header>
-						<h3>WHO GIVES A HOOT?</h3>
-						<h1>TESTIMONIALS</h1>
+						<h1>Latest Products</h1>
 					</header>
 					<article>
 						<header>
@@ -55,7 +47,7 @@ const Dashboard = ({}) => {
 			</main>
 
 			<footer className={styles.footer}>
-				© 2024 HOOT INC. OWL RIGHTS RESERVED
+				© 2025 AhlanMarket INC. Ahlan RIGHTS RESERVED
 			</footer>
 		</>
 	);

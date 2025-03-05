@@ -3,11 +3,13 @@ import { AuthedUserContext } from "../../App";
 import { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../App.css";
+import styles from "./navbar.module.css";
 
 const NavBar = ({ handleSignout }) => {
 	const user = useContext(AuthedUserContext);
 	return (
-		<nav className="navbar navbar-expand-lg" style={{backgroundColor:"rgba(255, 255, 255, 0.43)"}}>
+		<main  className={styles.container}>
+		  <nav class="navbar navbar-expand-lg  fixed-top navbar-scroll" style={{backgroundColor:"rgb(255, 255, 255)", padding:"0.5px"}}>
 			<div className="container-fluid cont">
 				<Link className="navbar-brand" to="/">
 					/
@@ -70,6 +72,7 @@ const NavBar = ({ handleSignout }) => {
 				</div>
 			</div>
 		</nav>
+		</main>
 	);
 };
 
