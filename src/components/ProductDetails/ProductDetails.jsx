@@ -87,14 +87,13 @@ const ProductDetails = (props) => {
 			width: "100%", height:"90%"
 			}}>
           <div className="project-info-box mt-0">
-            <h1>{product.name || "No Title Available"}</h1> {/* Title Added Here */}
+            <h1>{product.name || "No Title Available"}</h1> 
             <h3 style={{marginTop:50, textAlign:"left"}}>product details</h3>
             <p className="mb-20" style={{textAlign:"left"}}>{product.description}</p>
           </div>
 
           <div className="project-info-box">
-            {/* <p style={{textAlign:"left"}}><b>Posted Date:</b> {new Date(product.createdAt).toLocaleDateString()}</p> */}
-            {/* <p style={{textAlign:"left"}}><b>Author:</b> {product.author?.username || "Anonymous"}</p> */}
+
             <p className="mb-0" style={{textAlign:"left"}}><b>Price:</b> ${product.price}</p>
 			<p style={{textAlign:"left"}}>Category: {product.category?.toUpperCase()}</p>
           </div>
@@ -104,7 +103,6 @@ const ProductDetails = (props) => {
         <div className="col-md-7" style={{marginTop:50, marginLeft:"auto", marginRight:"auto"}}>
           <img src={product.image} alt={product.name} className="rounded" style={{ width: "100%", height:"90%" }} />
           <div className="project-info-box">
-            {/* <p><b>Categories:</b> {product.category?.toUpperCase()}</p> */}
 			<p className="mb-10" style={{marginTop:15}}><b>Posted on</b> {new Date(product.createdAt).toLocaleDateString()} by {product.author?.username} </p>
 			{product.author?._id === user?._id && (
 							<>
@@ -137,11 +135,11 @@ const ProductDetails = (props) => {
   <br />
   <div
     style={{
-      maxHeight: "300px", // Set a fixed height for the comments container
-      overflowY: "auto", // Enable vertical scrolling
-      border: "1px solid #ccc", // Optional: Add a border
-      borderRadius: "8px", // Optional: Add rounded corners
-      padding: "10px", // Optional: Add padding
+      maxHeight: "300px", 
+      overflowY: "auto", 
+      border: "1px solid #ccc", 
+      borderRadius: "8px", 
+      padding: "10px", 
 	  width:"600px",
 	  background:"white"
 
@@ -155,10 +153,10 @@ const ProductDetails = (props) => {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            justifyContent: "space-between", // Space out the content
+            justifyContent: "space-between",
             gap: "20px",
             padding: "10px",
-            borderBottom: "1px solid #eee", // Lighter border for separation
+            borderBottom: "1px solid #eee", 
           }}
         >
           <div style={{ flex: 1 }}>
@@ -172,19 +170,12 @@ const ProductDetails = (props) => {
           </div>
           {comment.author?._id === user?._id && (
             <div className="buttons">
-              {/* <Link
-                to={`/market/${marketId}/comments/${comment._id}/edit`}
-              >
-              </Link> */}
+ 
               <button
                 onClick={() => handleDeleteComment(comment._id)}
 				className='btn btn-danger'
                 style={{
-                //   background: "red",
-                //   color: "white",
-                //   border: "none",
-                //   padding: "5px 10px",
-                //   borderRadius: "4px",
+
                   cursor: "pointer",
                 }}
               >

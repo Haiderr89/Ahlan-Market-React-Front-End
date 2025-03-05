@@ -1,4 +1,4 @@
-// src/components/CommentForm/CommentForm.jsx
+
 import { useState, useEffect } from 'react';
 import * as marketService from '../../services/marketService';
 import './CommentForm.module.css';
@@ -17,7 +17,7 @@ const CommentForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ maxHeight: "300px", // Set a fixed height for the comments container
+    <form onSubmit={handleSubmit} style={{ maxHeight: "300px",
     }}>
       <h2>Add Comment</h2>
       <textarea

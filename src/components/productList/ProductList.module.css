@@ -49,25 +49,25 @@
 
 .scrollableRow {
   display: flex;
-  flex-wrap: nowrap; /* Prevent wrapping to the next line */
-  overflow-x: auto; /* Enable horizontal scrolling */
-  scrollbar-width: thin; /* For Firefox */
-  scrollbar-color: #888 #f1f1f1; /* For Firefox */
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: thin; 
+  scrollbar-color: #888 #f1f1f1;
 }
 
 .scrollableRow::-webkit-scrollbar {
-  height: 8px; /* Height of the scrollbar */
+  height: 8px; 
 }
 
 .scrollableRow::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Color of the track */
+  background: #f1f1f1;
 }
 
 .scrollableRow::-webkit-scrollbar-thumb {
-  background: #888; /* Color of the scrollbar */
-  border-radius: 4px; /* Rounded corners */
+  background: #888;
+  border-radius: 4px; 
 }
 
 .scrollableRow::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Color of the scrollbar on hover */
+  background: #555; 
 }
