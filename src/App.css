@@ -36,7 +36,7 @@
 
 form {
   border: black solid 1px;
-  background-color: aqua;
+  /* background-color: aqua; */
 }
 
 input#confirm {
