@@ -34,7 +34,7 @@ const SigninForm = (props) => {
   return (
     <main><br /><br />
       <h1>Log In</h1>
-      {/* <p>{message}</p> */}
+      <p>{message}</p>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <img src="src/assets/enhanced_image-8.png" width={300} height={200} style={{marginBottom:50}} alt="" />
         <div>

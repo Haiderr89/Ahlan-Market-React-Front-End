@@ -41,7 +41,7 @@ const SignupForm = (props) => {
     <main>
       <br /><br />
       <h1>Sign Up</h1>
-      {/* <p>{message}</p> */}
+      <p>{message}</p>
       <form onSubmit={handleSubmit}>
       <img src="src/assets/enhanced_image-8.png" width={300} height={200} style={{marginBottom:50}} alt="" />
         <div>
