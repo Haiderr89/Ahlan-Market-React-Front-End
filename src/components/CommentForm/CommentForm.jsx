@@ -28,7 +28,7 @@ const CommentForm = (props) => {
         value={formData.text}
         onChange={handleChange}
       />
-      <button type="submit" style={{width:"20vw", height: "10vh"}}>SUBMIT COMMENT</button>
+      <button type="submit" style={{width:"20vw", height: "10vh"}} className='bn'>SUBMIT COMMENT</button>
     </form>
   );
 };

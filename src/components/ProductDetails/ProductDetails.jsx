@@ -110,11 +110,11 @@ const ProductDetails = (props) => {
 					<h1>{product.name}</h1>
 					<p>{product.category?.toUpperCase()}</p>
 
-					<img
+					<img id="det"
+            style={{width: "40%"}}
 						src={product.image}
 						alt={product.name}
-						className={styles.productImage}
-						style={{ height: "60%" }}
+						// className={styles.productImage}
 					/>
 
 					<h2>${product.price}</h2>
@@ -166,12 +166,11 @@ const ProductDetails = (props) => {
 									</p>
 									{comment.author?._id === user?._id && (
 										<>
+                    <div className='buttons'>
 											<Link to={`/market/${marketId}/comments/${comment._id}/edit`}></Link>
-											<button
-												onClick={() => handleDeleteComment(comment._id)}
-											>
-												Delete
-											</button>
+  
+											<button onClick={() => handleDeleteComment(comment._id)}> Delete </button>
+                    </div>
 										</>
 									)}
 								</div>

@@ -46,3 +46,28 @@
 .overlay h1, .overlay h2, .overlay p {
   margin: 5px 0;
 }
+
+.scrollableRow {
+  display: flex;
+  flex-wrap: nowrap; /* Prevent wrapping to the next line */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #888 #f1f1f1; /* For Firefox */
+}
+
+.scrollableRow::-webkit-scrollbar {
+  height: 8px; /* Height of the scrollbar */
+}
+
+.scrollableRow::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+}
+
+.scrollableRow::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar */
+  border-radius: 4px; /* Rounded corners */
+}
+
+.scrollableRow::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar on hover */
+}

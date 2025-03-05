@@ -7,7 +7,7 @@ import "../../App.css";
 const NavBar = ({ handleSignout }) => {
 	const user = useContext(AuthedUserContext);
 	return (
-		<nav className="navbar navbar-expand-lg">
+		<nav className="navbar navbar-expand-lg" style={{backgroundColor:"rgba(255, 255, 255, 0.43)"}}>
 			<div className="container-fluid cont">
 				<Link className="navbar-brand" to="/">
 					/
