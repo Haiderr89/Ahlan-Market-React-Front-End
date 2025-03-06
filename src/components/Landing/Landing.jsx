@@ -22,10 +22,11 @@ const Landing = () => {
 					<article>
 
 						<p>
-							I found Hoot through a friend of mine, and I'm so glad I did. As a
-							night owl, I have a hard time finding blogging apps that fit my
-							lifestyle. The interface is so easy to use and makes it really
-							convenient for me to write my blog posts at night.
+						Not everyone wants to buy places from different sites and app. So
+							why not buy all kinds? That's why AhlanMarket exist! Not only can
+							you buy items sold by famous companies. Services? We got it! New
+							products? Yes we got it! Used products? You name it! All can be
+							bought today in AhlanMarket
 						</p>
 					</article>
 				</section>
