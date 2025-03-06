@@ -22,7 +22,7 @@ const Landing = () => {
 					<article>
 
 						<p>
-						Not everyone wants to buy places from different sites and app. So
+							Not everyone wants to buy places from different sites and app. So
 							why not buy all kinds? That's why AhlanMarket exist! Not only can
 							you buy items sold by famous companies. Services? We got it! New
 							products? Yes we got it! Used products? You name it! All can be
