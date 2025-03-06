@@ -51,4 +51,4 @@ The ***Ahlan Market*** website is a dynamic online marketplace where users can b
 - **Payment Integration** – Enable secure online transactions for a seamless buying experience.  
 - **Rating & Reviews** – Allow users to rate sellers and leave feedback on transactions.  
 - **Wishlist & Favorites** – Let users save items they are interested in for later.  
-- **User Upload Image** – Allow user to upload the image of the product rather than the image address.  
+- **User Upload Image** – Allow user to upload the image using cloudinary of the product rather than the image address.  
