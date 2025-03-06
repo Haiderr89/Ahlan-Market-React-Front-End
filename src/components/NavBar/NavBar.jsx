@@ -38,7 +38,7 @@ const NavBar = ({ handleSignout }) => {
         <div className="container-fluid cont">
           <Link className="navbar-brand" to="/">
             <img
-              src="src/assets/image.png"
+              src="/image.png"
               width={40}
               height={35}
               alt="the logo"

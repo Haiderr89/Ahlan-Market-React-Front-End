@@ -36,7 +36,7 @@ const SigninForm = (props) => {
       <h1>Log In</h1>
       <p>{message}</p>
       <form autoComplete="off" onSubmit={handleSubmit}>
-        <img src="src/assets/im.png" width={300} height={200} style={{marginBottom:50}} alt="" />
+        <img src="/imageTitle.png" width={300} height={200} style={{marginBottom:50}} alt="" />
         <div>
           <label htmlFor="email">Username:</label>
           <input
