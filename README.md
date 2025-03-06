@@ -12,8 +12,6 @@
 
 
 ## Description: 
-The ***TripBuddy*** Website is a user-friendly platform for creating and managing trip itineraries, built with **HTML, CSS, JavaScript, EJS, MongoDB, Bootstrap, and Express.js**. Users can add trip details like country, status, and notes, and have the ability to edit, delete, or view each trip. This project was chosen to showcase dynamic web development and CRUD operations, making trip planning a seamless and interactive experience.
-
 The ***Ahlan Market*** website is a dynamic online marketplace where users can buy and sell both new and used items, as well as offer services. Built with **HTML, CSS, JavaScript, MongoDB, Bootstrap, React and Express.js which is fully MERN stack**. The platform allows users to list products, interact through a comment section for inquiries, and manage their listings with ease. This project highlights the power of full-stack web development and CRUD operations, creating a seamless and interactive shopping experience.
 
 ## Getting started: 
